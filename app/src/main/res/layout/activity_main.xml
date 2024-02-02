@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context=".MainActivity">
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:layout_alignParentBottom="true"
+        android:layout_width="match_parent"
+        android:layout_margin="20dp"
+        android:id="@+id/screen"
+        android:src="@drawable/as"
+        android:layout_height="100dp"
+        />
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+
+
+        >
+    <GridLayout
+        android:id="@+id/alphaGrid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:columnCount="1" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontal_only"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_toEndOf="@id/alphaGrid"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <GridLayout
+                android:id="@+id/seatsGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:columnCount="1" />
+
+
+            <GridLayout
+                android:id="@+id/numGrid"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:rowCount="1" />
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    </RelativeLayout>
+
+</RelativeLayout>
