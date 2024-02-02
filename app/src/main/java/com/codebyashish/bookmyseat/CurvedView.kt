@@ -1,66 +1,66 @@
-package com.codebyashish.bookmyseat;
+package com.codebyashish.bookmyseat
 
-import android.content.Context;
-import android.graphics.Canvas;
-import android.graphics.Paint;
-import android.graphics.Path;
-import android.util.AttributeSet;
-import android.util.Log;
-import android.view.View;
+import android.content.Context
+import android.graphics.Canvas
+import android.graphics.Paint
+import android.graphics.Path
+import android.util.AttributeSet
+import android.view.View
 
-import androidx.annotation.NonNull;
+class CurvedView : View {
+    private var paint: Paint? = null
+    private var paint2: Paint? = null
+    private var path: Path? = null
+    private var path2: Path? = null
 
-public class CurvedView extends View {
-    private Paint paint, paint2;
-    private Path path, path2;
-
-    public CurvedView(Context context) {
-        super(context);
-        init();
+    constructor(context: Context?) : super(context) {
+        init()
     }
 
-    public CurvedView(Context context, AttributeSet attrs) {
-        super(context, attrs);
-        init();
+    constructor(context: Context?, attrs: AttributeSet?) : super(context, attrs) {
+        init()
     }
 
-    public CurvedView(Context context, AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-        init();
+    constructor(context: Context?, attrs: AttributeSet?, defStyleAttr: Int) : super(
+        context,
+        attrs,
+        defStyleAttr
+    ) {
+        init()
     }
 
-    private void init() {
-        paint = new Paint();
-        paint.setAntiAlias(true);
-        paint.setStyle(Paint.Style.FILL);
-        paint.setColor(getResources().getColor(android.R.color.darker_gray)); // Change color as needed
-
-        paint2 = new Paint();
-        paint2.setAntiAlias(true);
-        paint2.setStyle(Paint.Style.FILL);
-        paint2.setColor(getResources().getColor(android.R.color.white)); // Change color as needed
-
-        path = new Path();
-        path2 = new Path();
+    private fun init() {
+        paint = Paint()
+        paint!!.isAntiAlias = true
+        paint!!.style = Paint.Style.FILL
+        paint!!.color = resources.getColor(android.R.color.darker_gray)
+        paint2 = Paint()
+        paint2!!.isAntiAlias = true
+        paint2!!.style = Paint.Style.FILL
+        paint2!!.color = resources.getColor(R.color.white)
+        path = Path()
+        path2 = Path()
     }
 
-    @Override
-    protected void onDraw(@NonNull Canvas canvas) {
-        super.onDraw(canvas);
-
-        int width = getWidth();
-        int height = 150;
-
-        path.moveTo(0, height);
-        path2.moveTo( 50,  height);
-
-
-        path.quadTo((float) (width/2), (float) height/2 -200, (float) width, height);
-        path2.quadTo((float) (width/2), (float) height/2 -150, width - 50, height);
-
-
-        canvas.drawPath(path, paint);
-
-        canvas.drawPath(path2, paint2);
+    override fun onDraw(canvas: Canvas) {
+        super.onDraw(canvas)
+        val width = width
+        val height = 150
+        path!!.moveTo(0f, height.toFloat())
+        path2!!.moveTo(50f, height.toFloat())
+        path!!.quadTo(
+            (width / 2).toFloat(),
+            height.toFloat() / 2 - 200,
+            width.toFloat(),
+            height.toFloat()
+        )
+        path2!!.quadTo(
+            (width / 2).toFloat(),
+            height.toFloat() / 2 - 150,
+            (width - 50).toFloat(),
+            height.toFloat()
+        )
+        canvas.drawPath(path!!, paint!!)
+        canvas.drawPath(path2!!, paint2!!)
     }
 }
