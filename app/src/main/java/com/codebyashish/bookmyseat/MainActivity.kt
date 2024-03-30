@@ -31,9 +31,9 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val  gridLayout = GridLayout(this)
-        val  gridLayout2 = GridLayout(this)
-        val  gridLayout3 = GridLayout(this)
+        val gridLayout = GridLayout(this)
+        val gridLayout2 = GridLayout(this)
+        val gridLayout3 = GridLayout(this)
         alphaGridLayout = findViewById(R.id.alphaGrid)
         numGridLayout = findViewById(R.id.numGrid)
         seatsGridLayout = findViewById(R.id.seatsGrid)
@@ -41,14 +41,14 @@ class MainActivity : AppCompatActivity() {
         initializeLabelList()
         initializeNumList()
 
-        for (i in 0 until  1){
-            for (j in 0 until numColumns){
-                val seat : TextView = alphaRowText()
+        for (i in 0 until 1) {
+            for (j in 0 until numColumns) {
+                val seat: TextView = alphaRowText()
                 val rowSpec = GridLayout.spec(i, 1f)
                 val colSpec = GridLayout.spec(j, 1f)
                 val params = GridLayout.LayoutParams(rowSpec, colSpec)
-                params.width = 100
-                params.height = 100
+                params.width = 90
+                params.height = 90
                 params.setMargins(5, 5, 5, 5)
                 seat.layoutParams = params
 
@@ -58,14 +58,14 @@ class MainActivity : AppCompatActivity() {
         }
         numGridLayout.addView(gridLayout3)
 
-        for (i in 0 until  numRows){
-            for (j in 0 until 1){
-                val seat : TextView = alphaRowText()
+        for (i in 0 until numRows) {
+            for (j in 0 until 1) {
+                val seat: TextView = alphaRowText()
                 val rowSpec = GridLayout.spec(i, 1f)
                 val colSpec = GridLayout.spec(j, 1f)
                 val params = GridLayout.LayoutParams(rowSpec, colSpec)
-                params.width = 100
-                params.height = 100
+                params.width = 90
+                params.height = 90
                 params.setMargins(5, 5, 5, 5)
                 seat.layoutParams = params
 
@@ -76,18 +76,19 @@ class MainActivity : AppCompatActivity() {
         alphaGridLayout.addView(gridLayout2)
 
 
+
+
         for (i in 0 until numRows) {
             for (j in 0 until numColumns) {
                 val seat: TextView = createSeatView()
                 val rowSpec = GridLayout.spec(i, 1f)
                 val colSpec = GridLayout.spec(j, 1f)
                 val params = GridLayout.LayoutParams(rowSpec, colSpec)
-                params.width = 100
-                params.height = 100
+                params.width = 90
+                params.height = 90
                 params.setMargins(5, 5, 5, 5)
                 seat.layoutParams = params
 
-//                seat.text = (i * numColumns + j + 1).toString()
                 seat.text = labelList[i] + numList[j]
 
                 seat.setOnClickListener { v: View? ->
@@ -115,20 +116,23 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun handleSeatSelection(seat: TextView) {
-       if (seat.isSelected){
-           seat.isSelected = false
-           seat.background = ResourcesCompat.getDrawable(resources, R.drawable.tab_background, null)
-           seat.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.lg
-           ))
-           seat.setTextColor(resources.getColor(R.color.black))
-           Toast.makeText(applicationContext, seat.text , Toast.LENGTH_SHORT).show()
-       } else {
-           seat.isSelected = true
-           seat.background = ResourcesCompat.getDrawable(resources, R.drawable.tab_background, null)
-           seat.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.lg2))
-           seat.setTextColor(resources.getColor(R.color.white))
-           Toast.makeText(applicationContext, seat.text , Toast.LENGTH_SHORT).show()
-       }
+        if (seat.isSelected) {
+            seat.isSelected = false
+            seat.background =
+                ResourcesCompat.getDrawable(resources, R.drawable.tab_background, null)
+            seat.backgroundTintList = ColorStateList.valueOf(
+                resources.getColor(
+                    R.color.lg
+                )
+            )
+            seat.setTextColor(resources.getColor(R.color.black))
+        } else {
+            seat.isSelected = true
+            seat.background =
+                ResourcesCompat.getDrawable(resources, R.drawable.tab_background, null)
+            seat.backgroundTintList = ColorStateList.valueOf(resources.getColor(R.color.lg2))
+            seat.setTextColor(resources.getColor(R.color.white))
+        }
     }
 
     private fun createSeatView(): TextView {
@@ -146,7 +150,7 @@ class MainActivity : AppCompatActivity() {
         for (i in 0 until numRows) {
             labelList.add(('A' + i).toString())
         }
-        labelList.add(0," ")
+        labelList.add(0, " ")
         labelList.reverse()
     }
 
